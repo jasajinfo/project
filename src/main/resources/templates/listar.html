@@ -1,29 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listar Produtos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listar Produtos</title>
+  <link rel="stylesheet" th:href="@{css/style.css}">
 </head>
+
 <body>
-    <div class="container">
-        <h1>Listagem de Produtos</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Preço</th>
-                </tr>
-            </thead>
-            <tbody>
-               
-                <tr>
-                    <td>Id do produto</tr>td>                        td>
-                    <td>Nome do produto</td>
-                    <td>Preo do produto</td>
-                </tr>
-            </tbody>
-        </table>
+  <div class="container">
+    <h1>Listagem de Produtos</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Preço</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="produto : ${todosOsProdutos}">
+          <td th:text="${produto.id}">Id do produto</td>
+          <td th:text="${produto.nome}">Nome do produto</td>
+          <td th:text="${produto.preco}">Preço do produto</td>
+        </tr>
+      </tbody>
+    </table>
+    <a th:href="@{/cadastro}">Cadastrar novo produto</a>
+  </div>
 </body>
+
 </html>
